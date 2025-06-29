@@ -4,12 +4,11 @@ from flask_socketio import emit #We get rid of socketIO and keep emit for commun
 from snake_handler import  snake_Handler
 from scripts.socketio_instance import socketio
 homeApp = Flask(__name__)
+socketio.init_app(homeApp)
 
 #Registers snake_Handler's blueprint
 #This will handle the snake game page
 homeApp.register_blueprint(snake_Handler)
-
-#socketio = SocketIO(homeApp)
 
 #Defines index (home) page
 @homeApp.route("/")

@@ -1,11 +1,12 @@
 #!/home/sacred/myenv/bin/python3
 from flask import Flask, render_template, Blueprint
-from flask_socketio import SocketIO, emit
+#from flask_socketio import SocketIO, emit
 from scripts.snake_game import SnakeGame
+from home import socketio
 
 #Basic declarations
-app = Flask(__name__)
-socketio = SocketIO(app)
+#app = Flask(__name__)
+#socketio = SocketIO(app)
 game = SnakeGame()
 
 snake_Handler = Blueprint('snake_Handler', __name__, template_folder='templates')

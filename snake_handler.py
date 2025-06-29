@@ -1,8 +1,8 @@
 #!/home/sacred/myenv/bin/python3
 from flask import Flask, render_template, Blueprint
-#from flask_socketio import SocketIO, emit
+from flask_socketio import emit #We get rid of socketIO and keep emit for communication
 from scripts.snake_game import SnakeGame
-from home import socketio
+from scripts.socketio_instance import socketio #imports socketio from this instance to avoid circular reference
 
 #Basic declarations
 #app = Flask(__name__)
@@ -28,6 +28,6 @@ def handle_game_restart():
 def handle_change_direction(direction):
 	game.change_direction(direction)
 
-if __name__ == '__main__':
-	socketio.run(app, debug=True)
+#if __name__ == '__main__':
+#	socketio.run(app, debug=True)
 

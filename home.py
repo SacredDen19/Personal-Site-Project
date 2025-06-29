@@ -1,15 +1,15 @@
 #!/home/sacred/myenv/bin/python3
 from flask import Flask, render_template
-from flask_socketio import SocketIO, emit
+from flask_socketio import emit #We get rid of socketIO and keep emit for communication
 from snake_handler import  snake_Handler
-
+from scripts.socketio_instance import socketio
 homeApp = Flask(__name__)
 
 #Registers snake_Handler's blueprint
 #This will handle the snake game page
 homeApp.register_blueprint(snake_Handler)
 
-socketio = SocketIO(homeApp)
+#socketio = SocketIO(homeApp)
 
 #Defines index (home) page
 @homeApp.route("/")

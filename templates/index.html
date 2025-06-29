@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
+	<body>
+		<h1>If you see this, it means that HTML is working properly. Cheers!</h1>
 
-<h1>If you see this, it means that HTML is working properly. Cheers!</h1>
-
-<p1>I can sense this is the beginning of something else</p1>
+		<p1>I can sense this is the beginning of something else</p1>
 
 
-<h1>This will reflect on github!</h1>
+		<h1>This will reflect on github!</h1>
 
+		<button id="SnakeGameButton" style="position:absolute; top: 500px; right:500px; padding:10px 20px; font-size:16px;">Snake Game</button>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"></Script>
+		<script>
+			const socket = io();
+			document.getElementById("SnakeGameButton").addEventListener('click', function() {
+				socket.emit('move_to_snake');
+			});
+			
+			socket.on('snakeGame_redirect', function() {
+				window.location.href = "/snake_game_page.html"
+			});
+		</script>
+	</body>
 </html>

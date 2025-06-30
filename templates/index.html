@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-			<link rel="stylesheet" href="/public_html/templates/stylesheets/landing_page.css">
+		<!--url_for function tells Flask to look for the landing page using the path given-->>
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/landing_page.css') }}">
 	</head>
 
 	<body>
-		<h1>If you see this, it means that HTML is working properly. Cheers!</h1>
-		<p1>I can sense this is the beginning of something else</p1>
-		<h1>This will reflect on github!</h1>
-
+		<div id="WelcomeBox">
+			<h1>If you see this, it means that HTML is working properly. Cheers!</h1>
+			<p1>I can sense this is the beginning of something else</p1>
+			<h1>This will reflect on github!</h1>
+		</div>
 
 
 

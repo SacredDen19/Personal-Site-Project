@@ -13,8 +13,8 @@
     text-align: center;
 }
 
-.divsContainer > #menuDiv {
-    position: relative;
+#menuDiv {
+    position: absolute;
     margin: auto;
     width: 400px;
     height: 35%;
@@ -26,10 +26,10 @@
     text-align: center;
 }
 
-.divsContainer > #menuDiv > #SnakeGameButton {
+#SnakeGameButton {
     position:absolute; 
     bottom: 250px; 
-    right: 50%; 
+    right: 33.5%; 
     padding:10px 20px; 
     font-size:16px;
 }

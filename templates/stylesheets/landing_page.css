@@ -9,6 +9,8 @@
 #WelcomeBox {
     margin: auto;
     border-style: solid;
+    border-width: medium;
+    border-color: beige;
     background-color: rgba(58,58,58,0.8);
     text-align: center;
 }

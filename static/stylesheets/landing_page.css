@@ -1,5 +1,5 @@
 
-.WelcomeBox {
+#WelcomeBox {
     margin: auto;
     border-style: solid;
     border-width: medium;
@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-.menuDiv {
+#menuDiv {
     position: relative;
     margin: auto;
     height: 400;
@@ -22,7 +22,7 @@
 #SnakeGameButton {
     position:absolute; 
     bottom: 250px; 
-    right:0px; 
+    right:-50%; 
     padding:10px 20px; 
     font-size:16px;
 }

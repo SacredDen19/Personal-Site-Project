@@ -1,16 +1,27 @@
-#SnakeGameButton {
-    position:absolute; 
-    top: 500px; 
-    right:500px; 
-    padding:10px 20px; 
-    font-size:16px;
-}
 
 #WelcomeBox {
     margin: auto;
     border-style: solid;
     border-width: medium;
-    border-color: beige;
+    border-color: rgb(0, 0, 0);
     background-color: rgba(58,58,58,0.8);
     text-align: center;
+}
+
+#menuDiv {
+    position: relative;
+    margin: auto;
+    border-style: solid;
+    border-width: medium;
+    border-color: rgb(255, 0, 0);
+    background-color: rgba(68, 56, 56, 0.8);
+    text-align: center;
+}
+
+#SnakeGameButton {
+    position:absolute; 
+    bottom: 250px; 
+    right:0px; 
+    padding:10px 20px; 
+    font-size:16px;
 }

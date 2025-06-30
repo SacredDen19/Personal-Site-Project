@@ -7,14 +7,20 @@
 
 	<body>
 		<div id="WelcomeBox">
-			<h1>If you see this, it means that HTML is working properly. Cheers!</h1>
-			<p1>I can sense this is the beginning of something else</p1>
-			<h1>This will reflect on github!</h1>
+			<h1 id="WelcomeHeader">If you see this, it means that HTML is working properly. Cheers!</h1>
+			<p1 id="WelcomeParagraph">I can sense this is the beginning of something else</p1>
+			<hr>
+		</div>
+		<div id="menuDiv">
+			<h1 id="menuPrompt">Selection Menu</h1>
+			<p2 id="menuParagraph2">Select something</p2>
+
+			<button id="SnakeGameButton">Snake Game</button>
 		</div>
 
 
 
-		<button id="SnakeGameButton">Snake Game</button>
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"></Script>
 		<script>
 			const socket = io();

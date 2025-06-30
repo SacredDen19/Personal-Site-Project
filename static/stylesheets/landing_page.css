@@ -24,6 +24,7 @@
     border-color: rgb(255, 0, 0);
     background-color: rgba(68, 56, 56, 0.8);
     text-align: center;
+    overflow: auto;
 }
 
 #SnakeGameButton {

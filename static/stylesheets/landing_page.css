@@ -1,4 +1,9 @@
 
+.divsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 #WelcomeBox {
     margin: auto;
     border-style: solid;

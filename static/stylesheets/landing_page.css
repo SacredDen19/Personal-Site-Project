@@ -3,7 +3,7 @@
     display: grid;
     position: relative;
     grid-column: 1;
-    row-gap: 20px;
+    row-gap: 8px;
     overflow: auto;
     align-items: center;
     height: 2000px;

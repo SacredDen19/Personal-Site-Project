@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!--url_for function tells Flask to look for the landing page using the path given-->>
+			<!--The meta tags stands for metadata (you know what metadata is silly!)-->
+			<!--viewport is important for page visibility in varying devices-->
+			<!--we then set the width and the level of zoom the has when loading the web page-->
+			<meta name="viewport" content="width=device-width, intiail-scale=1.0">
+
+		<!--url_for function tells Flask to look for the landing page using the path given-->
 		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/landing_page.css') }}">
 	</head>
 
-	<body>
-		<div class="menuContainer">
-			<div id="WelcomeBox">
-				<h1 id="WelcomeHeader">If you see this, it means that HTML is working properly. Cheers!</h1>
-				<p1 id="WelcomeParagraph">I can sense this is the beginning of something else</p1>
-				<hr>
-			</div>
-			<hr>
-			<div id="menuDiv">
-				<h1 id="menuPrompt">Selection Menu</h1>
-				<p2 id="menuParagraph2">Select something</p2>
+	<!--
+		This very big block will come in handy one day. (Hint: navigation)
+	<header> 
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+			</ul>
+		</nav>
+	</header>-->
 
-				<button id="SnakeGameButton">Snake Game</button>
+	
+	<main>
+		<body>
+				<div class="main-content">
+					<section class="WelcomeSection">
+						<div class="RandomElementsInWelcome" id="WelcomeMenuDiv">
+							<h1 id="WelcomeHeader">If you see this, it means that HTML is working properly. Cheers!</h1>
+							<p1 id="WelcomeParagraph">I can sense this is the beginning of something else</p1>
+							<hr>
+						</div>
+					</section>
 
-				<p4 id="ComingSoon">Work in progress</p4>
-				<input id="user_Name" type="text">
-				<input id="user_Pass" type="password">
-			
-			</div>
-		</div>
+					<section class="selection-menu-section">
+						<!--This div deals with the Selection Menu Items-->
+						<div class="selection-menu-buttons-section" id="menu-div">
 
+							<h1 class="selection-menu-buttons-section" id="menuPrompt">Selection Menu</h1>
+							<p2 class="selection-menu-buttons-section" id="menuParagraph2">Select something</p2>
 
+							<button class="selection-menu-buttons-section" id="SnakeGameButton">Snake Game</button>
+						</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"></Script>
-		<script>
-			const socket = io();
-			document.getElementById("SnakeGameButton").addEventListener('click', function() {
-				socket.emit('move_to_snake');
-			});
-			
-			socket.on('snakeGame_redirect', function() {
-				window.location.href = "/snake_game_page.html"
-			});
-		</script>
-	</body>
+						<div class="selection-menu-login-section">
+							<p4 class="selection-menu-login-section" id="ComingSoon">Or login</p4>
+							<form class="selection-menu-login-section" id="usr_item_events">
+								<input class="selection-menu-login-section" id="user_Name" type="text" placeholder="Username">
+								<input class="selection-menu-login-section" id="user_Pass" type="password" placeholder="Password">
+							</form>
+								
+						</div>
+					</section>
+				</div>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"></Script>
+			<script>
+				const socket = io();
+				document.getElementById("SnakeGameButton").addEventListener('click', function() {
+					socket.emit('move_to_snake');
+				});
+				
+				socket.on('snakeGame_redirect', function() {
+					window.location.href = "/snake_game_page.html"
+				});
+			</script>
+		</body>
+	</main>
 </html>

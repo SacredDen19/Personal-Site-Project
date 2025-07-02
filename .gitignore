@@ -1,0 +1,7 @@
+logs/
+logs/access.log
+logs/error.log
+logs/access.log
+*.log
+logs/*.log
+public_html/logs/

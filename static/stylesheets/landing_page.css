@@ -1,11 +1,21 @@
 
-.divsContainer {
-    display: flex;
-    flex-direction: column;
+.main-content {
+    display: grid;
+    position: relative;
+    grid-column: 1;
+    row-gap: 20px;
+    overflow: auto;
+    align-items: center;
+    height: 2000px;
+    border: 3px solid gray;
+    background-color: rgb(114, 77, 22);
 }
 
-#WelcomeBox {
-    margin: auto;
+#WelcomeMenuDiv {
+    grid-column: 1;
+    width: auto;
+    height: 400px;
+    /*margin: auto;*/
     border-style: solid;
     border-width: medium;
     border-color: rgb(0, 0, 0);
@@ -13,24 +23,45 @@
     text-align: center;
 }
 
+
 #menuDiv {
-    position: absolute;
-    margin: auto;
+    display: grid;
+    position: relative;
+    /*margin: auto;*/
     width: 400px;
-    height: 35%;
+    height: 400px;
     align-self: center;
     border-style: solid;
     border-width: medium;
     border-color: rgb(255, 0, 0);
     background-color: rgba(68, 56, 56, 0.8);
     text-align: center;
-    overflow: auto;
 }
 
+.selection-menu-section {
+    position: relative;
+    max-width: 400px;
+    top: 25px;
+    margin: 0 auto; /*centers section horizontally*/
+    background-color: #9c9595; 
+    border: 3.5px solid black;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(226, 10, 10, 0.85);
+}
+
+
+
+#ComingSoon {
+    left: -120px;
+}
+#user_Name {
+    left: -120px;
+}
+#user_Pass {
+    left: -120px;
+}
 #SnakeGameButton {
-    position:absolute; 
-    bottom: 250px; 
-    right: 33.5%; 
-    padding:10px 20px; 
-    font-size:16px;
+    padding: 10px; 
+    font-size: 1rem;
 }

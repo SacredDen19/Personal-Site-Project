@@ -16,8 +16,14 @@
             background-color: white;
         }
     </style>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/snake_game.css') }}">
 </head>
 <body>
+	<!--This form will return the user back to the index file (landing page)-->
+	<form action="/snake_game_redirect" class="return-home-forms" id="home-form" method="POST">
+		<input class="return-home-forms" type="submit" id="snake-home-btn" value="Home">
+	</form>
+
 	<button id="restartButton" style="position:absolute; top:100px; right:313px; padding:10px 20px; font-size:16px;">Restart</button>	
     <canvas id="gameCanvas" width="625" height="625"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
@@ -89,5 +95,7 @@
 }
 	setInterval(gameLoop, 100);
     </script>
+
+
 </body>
 </html>

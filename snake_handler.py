@@ -15,10 +15,15 @@ snake_Handler = Blueprint('snake_Handler', __name__, template_folder='templates'
 @snake_Handler.route("/snake_game_page.html", methods=['POST'])
 def show_Snake_Page():
 	session['current_page'] = 'snake_game_page.html'
-
-	
 	return render_template(session.get('current_page', 'snake_game_page.html'))
 
+@snake_Handler.route("/snake_game_redirect", methods=['POST'])
+def return_home():
+	session['current_page'] = 'index.html'
+	return render_template(session.get('current_page', 'index.html'))
+
+
+#socketio has to be removed and game events have to be manually handled as done so above this comment. For later.
 @socketio.on('move')
 def handle_move_snake():
 	game.move()

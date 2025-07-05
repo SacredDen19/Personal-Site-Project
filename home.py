@@ -28,6 +28,7 @@ homeApp.register_blueprint(snake_Handler)
 #Defines index (home) page
 @homeApp.route("/", methods=['GET', 'POST'])
 def index():
+	action = request.form.get('action')
 	if 'device_id' not in session:
 		session['device_id'] = str(uuid.uuid4())
 		session['visits'] = 1
@@ -50,9 +51,7 @@ def index():
 		database=os.getenv("DB_NAME"),
 		auth_plugin='mysql_native_password' #Forces the native password plugin to circumvent SSL restrictions (NOT SECURE AT ALL WILL CHANGE LATER)
 		)
-
 		cursor = db.cursor()
-	else:
 		
 		#Cursor allows flask to interact with the database
 		cursor.execute("SELECT * FROM users WHERE Username = %s AND Password = %s", (usrName, usrPass))
@@ -63,12 +62,6 @@ def index():
 			return render_template('account.html')
 		else:
 			return "Invalid credentials", 401
-
-#Listens for the Snake Game Button Press in the home page
-#It then emits the move event to the front end to redirect the page
-@socketio.on('move_to_snake')
-def snake_Page():
-	socketio.emit('snakeGame_redirect')
 
 if __name__ == '__main__':
 	socketio.run(homeApp, debug=True)

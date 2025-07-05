@@ -39,8 +39,9 @@
 
 							<h1 class="selection-menu-buttons-section" id="menuPrompt">Selection Menu</h1>
 							<p2 class="selection-menu-buttons-section" id="menuParagraph2">Select something</p2>
-
-							<button class="selection-menu-buttons-section" id="SnakeGameButton">Snake Game</button>
+							<form action="/snake_game_page.html" class="selection-menu-btn-event-form" id="btn-events" method="POST">
+								<input class="selection-menu-btn-event-form" name="action" type="submit" id="SnakeGameButton" value="Snake Game">
+							</form>		
 						</div>
 
 						<div class="selection-menu-login-section">
@@ -48,12 +49,13 @@
 							<form action="/" class="selection-menu-login-section" id="usr_item_events", method="POST">
 								<input class="selection-menu-login-section" name="usr" id ="usr" type="text" placeholder="Username">
 								<input class="selection-menu-login-section" name="secret" id="secret" placeholder="Password">
-								<input class="selection-menu-login-section" type="submit" id="submit-btn" value="Submit">
+								<input class="selection-menu-login-section" name="action" type="submit" id="submit-btn" value="Submit">
 							</form>
 								
 						</div>
 					</section>
 				</div>
+			<!--This block of code is an insult to my developer skills
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"></Script>
 			<script>
 				const socket = io();
@@ -65,6 +67,7 @@
 					window.location.href = "/snake_game_page.html"
 				});
 			</script>
+			-->
 		</body>
 	</main>
 </html>

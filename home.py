@@ -6,9 +6,12 @@ from snake_handler import  snake_Handler
 from scripts.socketio_instance import socketio
 import mysql.connector
 import os
-print("DB_USER:", os.getenv("DB_USER"))
-print("DB_USER:", os.getenv("DB_PASSWORD"))
-print("DB_USER:", os.getenv("DB_NAME"))
+
+#Debugging
+#print("DB_USER:", os.getenv("DB_USER"))
+#print("DB_USER:", os.getenv("DB_PASSWORD"))
+#print("DB_USER:", os.getenv("DB_NAME"))
+
 load_dotenv() #Loads vaeiables from the env file
 homeApp = Flask(__name__)
 socketio.init_app(homeApp)
@@ -34,11 +37,21 @@ homeApp.register_blueprint(snake_Handler)
 def index():
 	if request.method == 'GET':
 		return render_template('index.html')
-	elif request.method == 'POST':
-		usrName = request.form.get('usr')
-		usrPass = request.form.get('secret')
-		
+	if request.method == 'POST':
+		usrName = request.form['usr']
+		usrPass = request.form['secret']
 
+		cursor.execute("SELECT * FROM users WHERE Username = %s AND Password = %s", (usrName, usrPass))
+		user = cursor.fetchone()
+		
+		print(user)
+		print(usrName)
+		print(usrPass)
+
+		if user:
+			return render_template('account.html')
+		else:
+			return "Invalid credentials", 401
 
 #Listens for the Snake Game Button Press in the home page
 #It then emits the move event to the front end to redirect the page

@@ -6,7 +6,9 @@ from snake_handler import  snake_Handler
 from scripts.socketio_instance import socketio
 import mysql.connector
 import os
-
+print("DB_USER:", os.getenv("DB_USER"))
+print("DB_USER:", os.getenv("DB_PASSWORD"))
+print("DB_USER:", os.getenv("DB_NAME"))
 load_dotenv() #Loads vaeiables from the env file
 homeApp = Flask(__name__)
 socketio.init_app(homeApp)
@@ -15,7 +17,8 @@ db = mysql.connector.connect(
 	host=os.getenv("DB_HOST"),
 	user=os.getenv("DB_USER"),
 	password=os.getenv("DB_PASSWORD"),
-	database=os.getenv("DB_NAME")
+	database=os.getenv("DB_NAME"),
+	auth_plugin='mysql_native_password' #Forces the native password plugin to circumvent SSL restrictions (NOT SECURE AT ALL WILL CHANGE LATER)
 )
 
 cursor = db.cursor()

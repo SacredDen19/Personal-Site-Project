@@ -1,87 +1,61 @@
-<!DOCTYPE html>
-<html>
-	<head>
-			<!--The meta tags stands for metadata (you know what metadata is silly!)-->
-			<!--viewport is important for page visibility in varying devices-->
-			<!--we then set the width and the level of zoom the has when loading the web page-->
-			<meta name="viewport" content="width=device-width, intiail-scale=1.0">
+{% extends "base_template.html" %}
 
-		<!--url_for function tells Flask to look for the landing page using the path given-->
-		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/landing_page.css') }}">
-	</head>
+{% block title %}Home{% endblock %}
 
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/landing_page.css') }}">
+
+{% endblock %}
+
+{% block content %}
+	<div class="main-content">
+		<section class="WelcomeSection">
+			<div class="RandomElementsInWelcome" id="WelcomeMenuDiv">
+				<h1 id="WelcomeHeader">Welcome to this private website.</h1>
+				<p1 id="WelcomeParagraph">---warning! This is purely an experimental environment. This environment is being monitored and logged. Unauthorized access is PROHIBITED! 18 U.S.C. § 1030---</p1>
+				<hr>
+
+				<p4 id="description">This website is a personal project. This project is meant to strengthen my technical, theorical, 
+					and practical knowledge with regards to, but not limited to: scripting in various languages (Python JavaScript),
+					web development, server deployment, network protocols, OSI Model, databases (MySQL), and Cybersecurity.
+				</p4>
+			</div>
+		</section>
+
+		<section class="selection-menu-section">
+			<!--This div deals with the Selection Menu Items-->
+			<div class="selection-menu-buttons-section" id="menu-div">
+
+				<h1 class="selection-menu-buttons-section" id="menuPrompt">Selection Menu</h1>
+				<p2 class="selection-menu-buttons-section" id="menuParagraph2">Select something</p2>
+				<form action="/snake_game_page.html" class="selection-menu-btn-event-form" id="btn-events" method="POST">
+					<input class="selection-menu-btn-event-form" name="action" type="submit" id="SnakeGameButton" value="Snake Game">
+				</form>		
+			</div>
+
+			<div class="selection-menu-login-section">
+				<p4 class="selection-menu-login-section" id="ComingSoon">Or login</p4>
+				<form action="/" class="selection-menu-login-section" id="usr_item_events", method="POST">
+					<input class="selection-menu-login-section" name="usr" id ="usr" type="text" placeholder="Username">
+					<input class="selection-menu-login-section" name="secret" id="secret" placeholder="Password">
+					<input class="selection-menu-login-section" name="action" type="submit" id="submit-btn" value="Submit">
+				</form>
+					
+			</div>
+		</section>
+	</div>
+	<!--This block of code is an insult to my developer skills
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"></Script>
+	<script>
+		const socket = io();
+		document.getElementById("SnakeGameButton").addEventListener('click', function() {
+			socket.emit('move_to_snake');
+		});
 	
-
-	
-	<main>
-		<body>
-				<!--
-				This very big block will come in handy one day. (Hint: navigation)-->
-				<header class="nav-bar-header" id="nav-header-id"> 
-					<nav class="nav-bar">
-						<ul class="nav-bar-ul">
-							<li class="nav-bar-item">
-								<a class="nav-item" href="/">Home</a>
-							</li>
-							<li class="nav-bar-item">
-								<a class="nav-item" href="#">About</a>
-							</li>
-							<li class="nav-bar-item">
-								<a class="nav-item" href="#">Account</a>
-							</li>
-						</ul>
-					</nav>
-				</header>
-
-				<div class="main-content">
-					<section class="WelcomeSection">
-						<div class="RandomElementsInWelcome" id="WelcomeMenuDiv">
-							<h1 id="WelcomeHeader">Welcome to this private website.</h1>
-							<p1 id="WelcomeParagraph">---warning! This is purely an experimental environment. This environment is being monitored and logged. Unauthorized access is PROHIBITED! 18 U.S.C. § 1030---</p1>
-							<hr>
-
-							<p4 id="description">This website is a personal project. This project is meant to strengthen my technical, theorical, 
-								and practical knowledge with regards to, but not limited to: scripting in various languages (Python JavaScript),
-								web development, server deployment, network protocols, OSI Model, databases (MySQL), and Cybersecurity.
-							</p4>
-						</div>
-					</section>
-
-					<section class="selection-menu-section">
-						<!--This div deals with the Selection Menu Items-->
-						<div class="selection-menu-buttons-section" id="menu-div">
-
-							<h1 class="selection-menu-buttons-section" id="menuPrompt">Selection Menu</h1>
-							<p2 class="selection-menu-buttons-section" id="menuParagraph2">Select something</p2>
-							<form action="/snake_game_page.html" class="selection-menu-btn-event-form" id="btn-events" method="POST">
-								<input class="selection-menu-btn-event-form" name="action" type="submit" id="SnakeGameButton" value="Snake Game">
-							</form>		
-						</div>
-
-						<div class="selection-menu-login-section">
-							<p4 class="selection-menu-login-section" id="ComingSoon">Or login</p4>
-							<form action="/" class="selection-menu-login-section" id="usr_item_events", method="POST">
-								<input class="selection-menu-login-section" name="usr" id ="usr" type="text" placeholder="Username">
-								<input class="selection-menu-login-section" name="secret" id="secret" placeholder="Password">
-								<input class="selection-menu-login-section" name="action" type="submit" id="submit-btn" value="Submit">
-							</form>
-								
-						</div>
-					</section>
-				</div>
-			<!--This block of code is an insult to my developer skills
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"></Script>
-			<script>
-				const socket = io();
-				document.getElementById("SnakeGameButton").addEventListener('click', function() {
-					socket.emit('move_to_snake');
-				});
-				
-				socket.on('snakeGame_redirect', function() {
-					window.location.href = "/snake_game_page.html"
-				});
-			</script>
-			-->
-		</body>
-	</main>
-</html>
+		socket.on('snakeGame_redirect', function() {
+			window.location.href = "/snake_game_page.html"
+		});
+	</script>
+	-->
+{% endblock %}

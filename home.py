@@ -1,5 +1,5 @@
 #!/home/sacred/myenv/bin/python3
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 from flask_socketio import emit #We get rid of socketIO and keep emit for communication
 from dotenv import load_dotenv #This is needed for importing the .env which securely stores sensitive credentials
 from snake_handler import  snake_Handler

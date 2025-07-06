@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!--The meta tags stands for metadata (you know what metadata is silly!)-->
+	<!--viewport is important for page visibility in varying devices-->
+	<!--we then set the width and the level of zoom the has when loading the web page-->
+	<meta name="viewport" content="width=device-width, intial-scale=1.0">
     <meta charset="UTF-8" />
-    <title>{block title} title {% endblock %</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/landing_page.css') }}">
+    <title>{% block title %} title {% endblock %}</title>
+
+    <!--url_for function tells Flask to look for the base template css using the path given-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/base_template.css') }}">
+    
+    <!--Adds a block for adding additional stylesheets across pages-->
+    {% block stylesheets %}{% endblock %}
 </head>
 <body>
     <!--This very big block will come in handy one day. (Hint: navigation)-->
@@ -11,7 +20,7 @@
 		<nav class="nav-bar">
 			<ul class="nav-bar-ul">
 				<li class="nav-bar-item">
-					<a class="nav-item" href="/">Home</a>
+					<a class="nav-item" href="{{ url_for('index') }}">Home</a>
 				</li>
 				<li class="nav-bar-item">
 					<a class="nav-item" href="#">About</a>
@@ -22,13 +31,11 @@
 			</ul>
 		</nav>
 	</header>
-
     <main>
         {%block content%}
 
         {% endblock %}
 
     </main>
-
 </body>
 </html>

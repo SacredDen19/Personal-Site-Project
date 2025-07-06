@@ -1,4 +1,20 @@
 body {
-    background-color: blue;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;*/
+    background-color: #fcb5b5;
 }
 
+.game-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+canvas {
+    border: 1px solid black;
+    background-color: white;
+}

@@ -10,26 +10,40 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/landing_page.css') }}">
 	</head>
 
-	<!--
-		This very big block will come in handy one day. (Hint: navigation)
-	<header> 
-		<nav>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-			</ul>
-		</nav>
-	</header>-->
+	
 
 	
 	<main>
 		<body>
+				<!--
+				This very big block will come in handy one day. (Hint: navigation)-->
+				<header class="nav-bar-header" id="nav-header-id"> 
+					<nav class="nav-bar">
+						<ul class="nav-bar-ul">
+							<li class="nav-bar-item">
+								<a class="nav-item" href="/">Home</a>
+							</li>
+							<li class="nav-bar-item">
+								<a class="nav-item" href="#">About</a>
+							</li>
+							<li class="nav-bar-item">
+								<a class="nav-item" href="#">Account</a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+
 				<div class="main-content">
 					<section class="WelcomeSection">
 						<div class="RandomElementsInWelcome" id="WelcomeMenuDiv">
-							<h1 id="WelcomeHeader">If you see this, it means that HTML is working properly. Cheers!</h1>
-							<p1 id="WelcomeParagraph">I can sense this is the beginning of something else</p1>
+							<h1 id="WelcomeHeader">Welcome to this private website.</h1>
+							<p1 id="WelcomeParagraph">---warning! This is purely an experimental environment. This environment is being monitored and logged. Unauthorized access is PROHIBITED! 18 U.S.C. § 1030---</p1>
 							<hr>
+
+							<p4 id="description">This website is a personal project. This project is meant to strengthen my technical, theorical, 
+								and practical knowledge with regards to, but not limited to: scripting in various languages (Python JavaScript),
+								web development, server deployment, network protocols, OSI Model, databases (MySQL), and Cybersecurity.
+							</p4>
 						</div>
 					</section>
 

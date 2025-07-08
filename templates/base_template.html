@@ -20,7 +20,7 @@
 		<nav class="nav-bar">
 			<ul class="nav-bar-ul">
 				<li class="nav-bar-item">
-					<a class="nav-item" href="{{ url_for('index') }}">Home</a>
+					<a class="nav-item" id="home-nav-id" href="{{ url_for('index') }}">Home</a>
 				</li>
 				<li class="nav-bar-item">
 					<a class="nav-item" href="#">About</a>
@@ -37,5 +37,6 @@
         {% endblock %}
 
     </main>
+	<script src="{{ url_for('static', filename='JS/base_template.js') }}"></script>
 </body>
 </html>

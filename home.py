@@ -1,5 +1,5 @@
 #!/home/sacred/myenv/bin/python3
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 from flask_socketio import emit #We get rid of socketIO and keep emit for communication
 from dotenv import load_dotenv #This is needed for importing the .env which securely stores sensitive credentials
 from snake_handler import  snake_Handler
@@ -16,7 +16,7 @@ import os
 load_dotenv() #Loads vaeiables from the env file
 homeApp = Flask(__name__)
 homeApp.secret_key = os.getenv('SECRET_KEY') #Retrieves and sets the secret key from the .env file. Needed for user specific sessions
-socketio.init_app(homeApp)
+socketio.init_app(homeApp, manage_session=False)
 
 
 
@@ -28,7 +28,6 @@ homeApp.register_blueprint(snake_Handler)
 #Defines index (home) page
 @homeApp.route("/", methods=['GET', 'POST'])
 def index():
-	action = request.form.get('action')
 	if 'device_id' not in session:
 		session['device_id'] = str(uuid.uuid4())
 		session['visits'] = 1
@@ -37,7 +36,9 @@ def index():
 		session['visits'] += 1
 
 	if request.method == 'GET':
-		return render_template(session.get('current_page', 'index.html'))
+		session['current page'] = 'index.html'
+		return render_template('index.html')
+	
 	if request.method == 'POST':
 		usrName = request.form.get('usr')
 		usrPass = request.form.get('secret')

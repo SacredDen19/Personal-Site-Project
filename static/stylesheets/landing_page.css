@@ -38,11 +38,17 @@
     text-align: center;
 }
 
+.WelcomeSection {
+    position:relative;
+}
+
+
 .selection-menu-section {
     position: relative;
     max-width: 400px;
     height: 400px;
     top: -70%;
+    row-gap: 0px;
     margin: 0 auto; /*centers section horizontally*/
     background-color: #9c9595; 
     border: 3.5px solid black;

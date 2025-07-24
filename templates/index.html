@@ -29,9 +29,12 @@
 
 				<h1 class="selection-menu-buttons-section" id="menuPrompt">Selection Menu</h1>
 				<p2 class="selection-menu-buttons-section" id="menuParagraph2">Select something</p2>
-				<form action="/snake_game_page.html" class="selection-menu-btn-event-form" id="btn-events" method="POST">
-					<input class="selection-menu-btn-event-form" name="action" type="submit" id="SnakeGameButton" value="Snake Game">
-				</form>		
+				<div class="selection-menu-btn-events">	
+					<form action="/snake_game_page.html" class="selection-menu-btn-event-form" id="btn-events" method="POST">
+						<input class="selection-menu-btn-event-form" name="action" type="submit" id="SnakeGameButton" value="Snake Game">
+						<input class="selection-menu-btn-event-form" type="button" id="soon" value="Coming soon">
+					</form>
+				</div>		
 			</div>
 
 			<div class="selection-menu-login-section">
@@ -41,7 +44,17 @@
 					<input class="selection-menu-login-section" name="secret" id="secret" placeholder="Password">
 					<input class="selection-menu-login-section" name="action" type="submit" id="submit-btn" value="Submit">
 				</form>
-					
+			</div>
+			
+			<div class="selection-menu-register-div">
+				<p4>
+					Or create an account today!
+				</p4>
+				<form action="/register" class="selection-menu-register-form" id="usr-register-events" method="POST">
+					<input class="selection-menu-register-form-inputs" name="usr">
+					<input class="selection-menu-register-form-inputs" name="secret">
+					<input class="selection-menu-register-form-inputs" name="register" type="button" value="Submit">
+				</form>
 			</div>
 		</section>
 	</div>

@@ -1,5 +1,8 @@
 import mysql.connector
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Config():
 
@@ -8,10 +11,10 @@ class Config():
     SESSION_PERMANENT = False
     #Repositioned here for session handling
     #Connects to MySQL using the credentials found in .env using dotenv functions
-    db = mysql.connector.connect(
-    host=os.getenv("DB_HOST"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASSWORD"),
-    database=os.getenv("DB_NAME"),
+    
+    DB_HOST=os.getenv("DB_HOST")
+    DB_USER=os.getenv("DB_USER")
+    DB_PASSWORD=os.getenv("DB_PASSWORD")
+    DB_NAME=os.getenv("DB_NAME")
     auth_plugin='mysql_native_password' #Forces the native password plugin to circumvent SSL restrictions (NOT SECURE AT ALL WILL CHANGE LATER)
-    )
+    

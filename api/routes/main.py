@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, Blueprint, session, redirect
+from flask import Flask, render_template, request, Blueprint, session, redirect, current_app
 import uuid #Used for creating unique user IDs during sessions
-from api import main_app
+from flask import current_app #This helps prevent circular errors instead of doing the other import (from api import current_app)
 import mysql.connector
 blueprint_main = Blueprint("main", __name__)
 
@@ -27,10 +27,10 @@ def index():
 		#Repositioned here for session handling
 		#Connects to MySQL using the credentials found in .env using dotenv functions
 		db = mysql.connector.connect(
-		host=main_app.config["DB_HOST"],
-		user=main_app.config["DB_USER"],
-		password=main_app.config["DB_PASSWORD"],
-		database=main_app["DB_NAME"],
+		host=current_app.config["DB_HOST"],
+		user=current_app.config["DB_USER"],
+		password=current_app.config["DB_PASSWORD"],
+		database=current_app.config["DB_NAME"],
 		auth_plugin='mysql_native_password' #Forces the native password plugin to circumvent SSL restrictions (NOT SECURE AT ALL WILL CHANGE LATER)
 		)
 		cursor = db.cursor()

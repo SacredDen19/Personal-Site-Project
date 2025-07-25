@@ -1,24 +1,20 @@
 #!/home/sacred/myenv/bin/python3
-from flask import Flask, render_template, Blueprint, request, session
+from flask import Flask, render_template, Blueprint, request, session, current_app
 from flask_socketio import emit, join_room #We get rid of socketIO and keep emit for communication
 from scripts.snake_game import SnakeGame
 from scripts.socketio_instance import socketio #imports socketio from this instance to avoid circular reference
 
 #Basic declarations
-#app = Flask(__name__)
-#socketio = SocketIO(app)
-#    game = user_games.get(user_id)
 user_games = {} #This dict will store individual game sessions in memory (figure out a better solution later)
 
-snake_Handler = Blueprint('snake_Handler', __name__, template_folder='templates')
+snake_blueprint = Blueprint('snake_handler', __name__, template_folder='templates')
 
-
-@snake_Handler.route("/snake_game_page.html", methods=['POST'])
+@snake_blueprint.route("/snake_game_page.html", methods=['POST'])
 def show_Snake_Page():
 	session['current_page'] = 'snake_game_page.html'
 	return render_template(session.get('current_page', 'snake_game_page.html'))
 
-@snake_Handler.route("/snake_game_redirect", methods=['POST'])
+@snake_blueprint.route("/snake_game_redirect", methods=['POST'])
 def return_home():
 	session['current_page'] = 'index.html'
 	return render_template(session.get('current_page', 'index.html'))

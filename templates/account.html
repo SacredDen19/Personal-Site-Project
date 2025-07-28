@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Account Profile</title>
-</head>
-<body>
-    <h1>If you see this it means that we have successfully integrated MySQL and Flask with the front end!!!!!</h1>
-</body>
-</html>
+{% extends "base_template.html" %}
+
+{% block title %}Account{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/account.css') }}">{% endblock %}
+
+{% block content %}
+    <div class="account-main-content-div">
+        <section class="profile-section">
+            <div class="profile-section-container">
+                <h3 class="profile-section-container">Welcome to your account's profile. This page is a work in progress. Use the nav bar to go back.</h3>
+                <section class="account-options-section">
+                    <div class="account-options-section-inner-container">
+                        <h1 class="'account-options-section-inner-container" id="options-header">Welcome {{ user.Username }}! This is your account settings. Choose your options below.</h1>
+                        <div class="account-options-section-form-container">
+                            <form class="account-options-section-form-container" action="/logout" method="POST">
+                                <button id='logout-btn'type="submit" value="Logout">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+{% endblock %}

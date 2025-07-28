@@ -3,17 +3,20 @@ body {
 }
 
 .nav-bar-header {
+    box-sizing: border-box;
     position: sticky;
     top: 0;
     overflow: visible;
     z-index: 1000; /*Puts header above all other elements*/
-    width: auto;
+    width: 100%;
     height: 50px;
     background-color: rgba(83, 84, 85, 1);
     border: 4px solid black;
+    white-space: nowrap; /*Prevents long name wonkyness*/
 
 }
 .nav-bar-ul {
+    width: 100%;
     list-style: none; /*Removes the dot list*/
     margin: 0;
     padding: 0;
@@ -23,6 +26,11 @@ body {
 .nav-bar-item {
     float: left;
 }
+.nav-bar-item-right {
+    float: right;
+    overflow: hidden;
+    box-sizing: border-box;
+}
 .nav-item {
     color: rgb(255, 255, 255);
     text-align: center;
@@ -30,11 +38,6 @@ body {
     display: block;
     padding: 12px 16px;
     background-color: rgba(83, 84, 85, 0.80);
-}
-
-#usr-acc-container {
-    position: relative;
-    right: -59.38%;
 }
 
 .nav-item:hover {

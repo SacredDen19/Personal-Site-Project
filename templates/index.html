@@ -22,7 +22,6 @@
 				</p4>
 			</div>
 		</section>
-
 		<section class="selection-menu-section">
 			<!--This div deals with the Selection Menu Items-->
 			<div class="selection-menu-buttons-section" id="menu-div">
@@ -39,21 +38,26 @@
 
 			<div class="selection-menu-login-section">
 				<p4 class="selection-menu-login-section" id="ComingSoon">Or login</p4>
-				<form action="/" class="selection-menu-login-section" id="usr_item_events", method="POST">
-					<input class="selection-menu-login-section" name="usr" id ="usr" type="text" placeholder="Username">
-					<input class="selection-menu-login-section" name="secret" id="secret" placeholder="Password">
+				<form action="/login" class="selection-menu-login-section" id="usr_item_events", method="POST">
+					<input class="selection-menu-login-section {% if error %}inerr{% endif %}" name="usr" id ="usr" type="text" placeholder="Username">
+					<input class="selection-menu-login-section {% if error %}inerr{% endif %}" name="secret" id="secret" placeholder="Password">
+					{% if error %}
+						<div class="error-message">{{ error }}</div>
+					{% endif %}
 					<input class="selection-menu-login-section" name="action" type="submit" id="submit-btn" value="Submit">
 				</form>
 			</div>
-			
 			<div class="selection-menu-register-div">
 				<p4>
 					Or create an account today!
 				</p4>
 				<form action="/register" class="selection-menu-register-form" id="usr-register-events" method="POST">
-					<input class="selection-menu-register-form-inputs" name="usr" placeholder="Username">
-					<input class="selection-menu-register-form-inputs" name="secret" placeholder="Password">
-					<input class="selection-menu-register-form-inputs" name="register" type="button" value="Submit">
+					<input class="selection-menu-register-form-inputs {% if register_error %}reg-inerr{% endif %}" name="reg-usr" id="reg-usr" placeholder="Username">
+					<input class="selection-menu-register-form-inputs {% if register_error %}reg-inerr{% endif %}" name="reg-secret" id="reg-secret" placeholder="Password">
+					{% if register_error %}
+						<div class="register-error-message">{{ register_error }}</div>
+					{% endif %}
+					<input class="selection-menu-register-form-inputs" name="register" type="submit" value="Submit">
 				</form>
 			</div>
 		</section>

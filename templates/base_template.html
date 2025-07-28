@@ -26,10 +26,18 @@
 					<a class="nav-item" href="#">About</a>
 				</li>
 				<li class="nav-bar-item">
-					<a class="nav-item" href="#">Account</a>
+					<a class="nav-item">Account</a>
 				</li>
-				<li class="nav-bar-item" id="usr-acc-container">
-					<a class="nav-item" id="usr-acc" href="#">%usr%</a>
+				<li class="nav-bar-item-right" id="usr-acc-container">
+
+					<a class="nav-item" id="usr-acc" href="{{ url_for('auth.log_redirect') }}">
+						{% if user.Username %}
+							{{ user.Username }}
+						{% else %}
+							Guest
+						{% endif %}
+					</a>
+
 				</li>
 			</ul>
 		</nav>

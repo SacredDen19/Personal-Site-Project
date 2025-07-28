@@ -10,7 +10,6 @@
 }
 
 
-
 #WelcomeMenuDiv {
     grid-column: 1;
     width: auto;
@@ -54,9 +53,28 @@
     border: 3.5px solid black;
     padding: 24px;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(226, 10, 10, 0.85);
+    box-shadow: 0 0 8px rgba(226, 10, 10, 0.85);
 }
 
+.inerr {
+    border-radius: 3px;
+    box-shadow: 0 0 3px red;
+}
+
+.error-message {
+    color: red;
+    font-weight: 2px;
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black; /*This creates text borders using shadows*/
+}
+.reg-inerr {
+    border-radius: 0.5em;
+    box-shadow: 0 0 5px red;
+}
+.register-error-message {
+    color: rgb(255, 0, 0);
+    font-weight: 2px;
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+}
 
 #WelcomeHeader {
     color: white;

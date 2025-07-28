@@ -1,0 +1,50 @@
+.account-main-content-div {
+    display: grid;
+    position: relative;
+    grid-column: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /*align-items: top;*/
+    height: 3200px;
+    border: 3px solid rgb(156, 146, 146);
+    background-color: rgb(114, 77, 22);
+}
+
+.profile-section {
+    position: relative;
+    max-width: 400px;
+    height: 600px;
+    align-items: center;
+    row-gap: 0px;
+    margin: 0 auto; /*centers section horizontally*/
+    background-color: #a58b8b; 
+    border: 3.5px solid black;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(226, 10, 10, 0.85);
+}
+.profile-section-container {
+    align-items: center;
+    height: auto;
+}
+.account-options-section {
+    margin: 2em auto 0 auto;
+    width: 75%;
+    height: 50%;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    background-color: rgb(155, 155, 155);
+}
+.account-options-section-inner-container {
+    align-items: center;
+    margin: 1em 1em 1em 1em;
+}
+.account-options-section-form-container {
+    width: 15em;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+}
+#options-header {
+    font-size: 0.6em;
+}

@@ -16,7 +16,7 @@
     height: 600px;
     align-items: center;
     row-gap: 0px;
-    margin: 0 auto; /*centers section horizontally*/
+    margin: 2rem auto; /*centers section horizontally*/
     background-color: #a58b8b; 
     border: 3.5px solid black;
     padding: 24px;
@@ -46,5 +46,5 @@
     margin: 0 auto 0 auto;
 }
 #options-header {
-    font-size: 0.6em;
+    font-size: 1em;
 }

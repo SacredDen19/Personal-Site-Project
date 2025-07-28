@@ -1,7 +1,7 @@
 #This will include the login and register routes
 from flask import sessions, Flask, render_template, request, session, Blueprint, redirect, url_for, Response
 import sys
-from api.datab import load_loggedin, db_start_connection, register_user
+from api.datab import load_loggedin, db_start_connection, register_user, delete_registered
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -35,7 +35,8 @@ def login():
 		cursor = conn.cursor(dictionary=True)
 		
 		#Cursor allows flask to interact with the database
-		cursor.execute("SELECT * FROM users WHERE Username = %s AND Password = %s", (usrName, usrPass))
+		#cursor.execute(f"SELECT * FROM users WHERE Username = '{usrName}' AND Password = '{usrPass}'") DO NOT USE IN REAL PRODUCTION ONLY FOR TESTING AND EDUCATIONAL PURPOSES
+		cursor.execute("SELECT * FROM users WHERE Username = %s AND Password = %s", (usrName, usrPass)) #using %s prevents basic MySQL injections
 		user = cursor.fetchone()
 			
 		#Checks user authentication
@@ -60,3 +61,13 @@ def log_redirect():
 	else:
 	    return Response(status=204)
 
+@auth_blueprint.route('/account_delete', methods=['POST'])
+def account_delete():
+	user = load_loggedin()
+	if request.method == 'POST':
+		if delete_registered():
+			user = None
+			session.clear()
+			return render_template('index.html', user=user)
+		else:
+			return render_template('account.html', user=user)

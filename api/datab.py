@@ -54,3 +54,24 @@ def load_loggedin():
 	else:
 		user=None
 		return user
+def delete_registered():
+	try:
+		conn = db_start_connection()
+		cursor = conn.cursor(dictionary=True)
+		user = load_loggedin()
+		if user:
+			print(f"{user} entry and session:{dict(session)} cleared.")
+			cursor.execute("DELETE FROM users WHERE Userid = %s", (user['Userid'],))
+			conn.commit()
+			return True
+		else:
+			return False
+	except Exception:
+		print("There was an error handling this request")
+		return False
+	finally:
+		if cursor:
+			cursor.close()
+		if conn:
+			conn.close()		
+

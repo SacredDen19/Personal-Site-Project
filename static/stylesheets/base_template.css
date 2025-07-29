@@ -1,5 +1,25 @@
 body {
-    background-color: rgb(190, 190, 190);
+    background-color: red;
+    animation-name: animationRadiant;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;  
+}
+@keyframes animationRadiant {
+    from {background-color: red}
+    to {background-color: green}
+    from {background-color: green}
+    to {background-color: blue}
+    from {background-color: blue}
+    to {background-color: red}
+}
+
+
+
+
+main {
+    margin: 0.3rem -0.3rem 3rem -0.3rem;
+    background: rgb(60, 60, 60);
 }
 
 .nav-bar-header {

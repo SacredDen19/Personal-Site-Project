@@ -1,3 +1,4 @@
+
 .main-content {
     display: grid;
     position: relative;
@@ -5,8 +6,10 @@
     overflow: auto;
     align-items: top;
     height: 4000px;
-    border: 3px solid gray;
-    background-color: rgb(114, 77, 22);
+    border: 3px solid black;
+}
+.main-content-body {
+    margin: 1rem 1rem 1rem 1rem;
 }
 
 
@@ -43,18 +46,64 @@
 
 
 .selection-menu-section {
-    position: relative;
     max-width: 400px;
+    overflow: auto;
     height: 400px;
-    top: -70%;
-    row-gap: 0px;
-    margin: 0 auto; /*centers section horizontally*/
+    margin: 2.5rem auto; /*centers section horizontally*/
     background-color: #9c9595; 
     border: 3.5px solid black;
     padding: 24px;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(226, 10, 10, 0.85);
 }
+.selection-menu-section-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 1rem 2.5rem;
+    background-color: lightgray;
+    position: relative;
+    animation-name: animationExample;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;  
+}
+@keyframes animationExample {
+    from {background-color: lightgray}
+    to {background-color: gray}
+    from {background-color: gray}
+    to {background-color: darkgray}
+    from {background-color: darkgray}
+    to {background-color: lightgray}
+}
+
+.selection-menu-section-container * {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid black;
+}
+
+.selection-menu-login-section {
+    display: inherit;
+}
+/*
+.selection-menu-buttons-section {
+    border: 1px solid black;
+}
+.selection-menu-register-div * {
+    margin: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid black;
+}
+
+.selection-menu-login-section {
+    border: 1px solid black;
+}
+*/
+
 
 .inerr {
     border-radius: 3px;
@@ -76,8 +125,10 @@
     text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
 }
 
-#WelcomeHeader {
-    color: white;
+#menuParagraph2 {
+    text-align: center;
+    color-scheme: red;
+    font:caption;
 }
 #WelcomeParagraph {
     color: red;

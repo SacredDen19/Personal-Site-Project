@@ -35,8 +35,9 @@ def login():
 		cursor = conn.cursor(dictionary=True)
 		
 		#Cursor allows flask to interact with the database
-		#cursor.execute(f"SELECT * FROM users WHERE Username = '{usrName}' AND Password = '{usrPass}'") DO NOT USE IN REAL PRODUCTION ONLY FOR TESTING AND EDUCATIONAL PURPOSES
-		cursor.execute("SELECT * FROM users WHERE Username = %s AND Password = %s", (usrName, usrPass)) #using %s prevents basic MySQL injections
+		#cursor.execute(f"SELECT * FROM users WHERE Username = '{usrName}' AND Password = '{usrPass}'") #DO NOT USE IN REAL PRODUCTION ONLY FOR TESTING AND EDUCATIONAL PURPOSES
+		#user = cursor.fetchall()
+		cursor.execute("SELECT * FROM users WHERE Username = %s AND Password = %s", (usrName, usrPass)) #using %s prevents basic MySQL injection
 		user = cursor.fetchone()
 			
 		#Checks user authentication

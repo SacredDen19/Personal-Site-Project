@@ -1,7 +1,7 @@
 body {
     background-color: red;
     animation-name: animationRadiant;
-    animation-duration: 4s;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-direction: alternate;  
 }
@@ -11,7 +11,7 @@ body {
     from {background-color: green}
     to {background-color: blue}
     from {background-color: blue}
-    to {background-color: red}
+    to {background-color: rgb(195, 0, 255)}
 }
 
 

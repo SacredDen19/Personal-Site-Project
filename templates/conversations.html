@@ -1,0 +1,29 @@
+{% extends "base_template.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/conversations.css') }}">
+
+{% endblock %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='JS/conversations.js') }}"></script>
+
+<div class="main-content">
+    <div class="conversations-containter">
+        <div class="conversations-preview">preview</div>
+    </div>
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="message {% if message.user == 'user1' %} me {% else %} them {% endif %}">
+                <span class="username">{{ message.user }}</span>
+                <p class="text">{{ message.text }}</p>
+            </div>
+        {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

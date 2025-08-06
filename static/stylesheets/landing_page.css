@@ -61,6 +61,7 @@
     flex-direction: column;
     position: relative;
     padding: 1rem 2.5rem;
+    border-radius: 5rem;
     background-color: lightgray;
     position: relative;
     animation-name: animationExample;
@@ -69,12 +70,12 @@
     animation-direction: alternate;  
 }
 @keyframes animationExample {
-    from {background-color: lightgray}
+    from {background-color: #9c9595}
     to {background-color: gray}
     from {background-color: gray}
     to {background-color: darkgray}
     from {background-color: darkgray}
-    to {background-color: lightgray}
+    to {background-color: #9c9595}
 }
 
 .selection-menu-section-container * {

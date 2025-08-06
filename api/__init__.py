@@ -1,6 +1,6 @@
 from flask import Flask, session
 from .config import Config
-from .routes import blueprint_main, snake_blueprint, auth_blueprint
+from .routes import blueprint_main, snake_blueprint, auth_blueprint, conv_blueprint
 from dotenv import load_dotenv
 #from flask_socketio import SocketIO
 from scripts.socketio_instance import socketio
@@ -21,6 +21,7 @@ def main_app():
     mainApp.register_blueprint(blueprint_main)
     mainApp.register_blueprint(snake_blueprint)
     mainApp.register_blueprint(auth_blueprint)
+    mainApp.register_blueprint(conv_blueprint)
     
 
     return mainApp

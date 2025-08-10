@@ -1,3 +1,4 @@
+<!--This page contains the front end for the conversations page-->
 {% extends "base_template.html" %}
 
 {% block title %}Home{% endblock %}
@@ -9,21 +10,26 @@
 {% endblock %}
 
 {% block content %}
-<script src="{{ url_for('static', filename='JS/conversations.js') }}"></script>
 
 <div class="main-content">
+    <!--This container contains both the previews and conversation thread-->
     <div class="conversations-containter">
-        <div class="conversations-preview">preview</div>
+        {% for conversation_id in conversations.keys() %} <!--Shows the preview of the conversations that exist --->
+            <div class="conversations-preview" id="{{conversation_id}}">Convo id: {{ conversation_id }}</div>
+        {% endfor %}
     </div>
+    <!--This container contains individual message blocks-->
     <div class="messages-container">
-        {% for message in messages %}
-            <div class="message {% if message.user == 'user1' %} me {% else %} them {% endif %}">
+        <!--Commented this out as the front end deals with message box loading dynamically
+        {% for message in messages %} Same as conversations but for the messages
+            <div class="message {% if message.user == 'user1' %} me {% else %} them {% endif %}"> The if statement is used to set the different classes based on the user sent message for styling left/right
                 <span class="username">{{ message.user }}</span>
                 <p class="text">{{ message.text }}</p>
-            </div>
+            </div> 
         {% endfor %}
-
-        </div>
+        </div> -->
     </div>
 </div>
+<!--This script is used for making the message previews interactable-->
+<script src="{{ url_for('static', filename='JS/conversations.js') }}"></script>
 {% endblock %}

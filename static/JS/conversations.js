@@ -40,14 +40,14 @@ async function loadConversations(e) { //This asynchronous function is needed to 
             usernameSpan.classList.add('username');
             messageTextSpan.classList.add('text');
 
-            if (message.user == "user1") { //Checks if the user is the one that is logged in and assings the correct message box class for styling
+            if (message.sent_by_id != "1") { //Checks if the user is the one that is logged in and assings the correct message box class for styling
                 messageDiv.classList.add('them');
             } else {
                 messageDiv.classList.add('me');
             }
             //Adds the username and text data to the correct html element
-            usernameSpan.innerHTML = `${message.user}`;
-            messageTextSpan.innerHTML = `${message.text}`;
+            usernameSpan.innerHTML = `${message.sent_by_id}`;
+            messageTextSpan.innerHTML = `${message.message_text}`;
             //Adds the actual username and text elements to the message box
             messageDiv.appendChild(usernameSpan);
             messageDiv.appendChild(messageTextSpan);

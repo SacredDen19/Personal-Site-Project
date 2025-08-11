@@ -1,6 +1,8 @@
 from flask import sessions, Flask, render_template, request, session, Blueprint, redirect, url_for, Response, jsonify
-import sys
+import json
 from api.datab import load_loggedin, db_start_connection, register_user, delete_registered
+from ..models.messages import message
+from ..models.conversation_member import conversation_member
 
 conv_blueprint = Blueprint('conv', __name__)
 
@@ -9,17 +11,26 @@ conv_blueprint = Blueprint('conv', __name__)
 def main():
     if request.method == 'GET':
         user = load_loggedin()
-        conversations = get_conversations()
+        #Sets the correct user conversations and their previews
+        conversations = conversation_member.caller_id(session['user_id'])
+        #print(f'main class ran! Conversations value: {conversations}')
         #sorted_messages = sorted(messages, key=lambda x: x['time']) Sorts the messages dictionary using lambda function x which iterates through each message in messages dictionary and sorts them by time
         return render_template('conversations.html', user=user, conversations=conversations)
     
-@conv_blueprint.route('/conversations/<conversationID>', methods=['GET'])
+@conv_blueprint.route('/conversations/<int:conversationID>', methods=['GET'])
 def show_conversation(conversationID):
-
-    conversation_id = get_conversations().get(conversationID)
-
+    conversation_id = conversationID
+    ##conversation_id = conversation_member.caller_id(session)
+    ##conversation_id = get_conversations().get(conversationID)
     #conversations_json = jsonify(get_conversations())
-    return jsonify(conversation_id)
+
+    messages_posted = message.caller_id(conversation_id)
+    print("Below will print the messages posted: ")
+    print([message_posted.to_dict() for message_posted in messages_posted])
+
+    return jsonify({
+        'messages': [message_posted.to_dict() for message_posted in messages_posted]
+        })
     #return render_template('conversations.html', user=user, messages=conversations, conversations_json=conversations_json)
 
 
@@ -49,8 +60,11 @@ def get_conversations():
         '0' : {
             "messages" : [{'user': 'user2', 'text':"Welcome to the conversation page. More to come.", 'time': "08-06-2025 11:00"}
             ]},
-        '1' :{ 
-            "messages" : [
+        
+        '1' :{},
+
+        '2' : {
+            'messages' : [
             {'user': 'user1', 'text':"Hello, user2, how are you?", 'time': "08-06-2025 13:00"},
             {'user': 'user2', 'text':"Hello user1, I am good. How is it?", 'time': "08-06-2025 13:02"},
             {'user': 'user1', 'text':"It is very good. How's the day?", 'time': "08-06-2025 13:10"},
@@ -65,8 +79,8 @@ def get_conversations():
             {'user': 'user2', 'text':"Right, this sample conversation At one point the scroll bar and text wrapping will be put to the test with this message. Do you think so otherwise?", 'time': "08-10-2025 00:14"},
             {'user': 'user1', 'text':"I try not to be a pessimist about the conversations sample features.", 'time': "08-10-2025 00:18"},
             {'user': 'user1', 'text':"At one point everything will be fixed and things will be better", 'time': "08-10-2025 00:24"},
-            {'user': 'user2', 'text':"I guess we will see where time takes us.", 'time': "08-10-2025 01:04"},
-        ]},
-        '2' :{},
+            {'user': 'user2', 'text':"I guess we will see where time takes us.", 'time': "08-10-2025 01:04"}
+            ]
+        },
     }
     return conversations

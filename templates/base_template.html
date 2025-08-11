@@ -28,9 +28,11 @@
 				<li class="nav-bar-item">
 					<a class="nav-item">Games</a>
 				</li>
+				{% if user.Username == 'admin' %}
 				<li class="nav-bar-item">
 					<a class="nav-item" href="{{ url_for('conv.main') }}">Conversations</a>
 				</li>
+				{% endif %}
 				<li class="nav-bar-item-right" id="usr-acc-container">
 
 					<a class="nav-item" id="usr-acc" href="{{ url_for('auth.log_redirect') }}">

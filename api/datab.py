@@ -13,6 +13,7 @@ def db_start_connection():
 		auth_plugin='mysql_native_password' #Forces the native password plugin to circumvent SSL restrictions (NOT SECURE AT ALL WILL CHANGE LATER)
 		)
 		return db
+
 #This function handles the creation of new users in the site
 def register_user(username, password):
 	print('register function debug')

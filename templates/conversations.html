@@ -14,8 +14,9 @@
 <div class="main-content">
     <!--This container contains both the previews and conversation thread-->
     <div class="conversations-containter">
-        {% for conversation_id in conversations.keys() %} <!--Shows the preview of the conversations that exist --->
-            <div class="conversations-preview" id="{{conversation_id}}">Convo id: {{ conversation_id }}</div>
+        <!-- for conversation_id in conversations  --> <!--Shows the preview of the conversations that exist --->
+        {% for row in conversations %}
+            <div class="conversations-preview" id="{{row['conv_id']}}">Convo id: {{ row }}</div>
         {% endfor %}
     </div>
     <!--This container contains individual message blocks-->
@@ -32,4 +33,5 @@
 </div>
 <!--This script is used for making the message previews interactable-->
 <script src="{{ url_for('static', filename='JS/conversations.js') }}"></script>
+
 {% endblock %}

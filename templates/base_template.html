@@ -28,7 +28,7 @@
 				<li class="nav-bar-item">
 					<a class="nav-item">Games</a>
 				</li>
-				{% if user.Username == 'admin' %}
+				{% if user.Username %}
 				<li class="nav-bar-item">
 					<a class="nav-item" href="{{ url_for('conv.main') }}">Conversations</a>
 				</li>

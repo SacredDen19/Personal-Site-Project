@@ -29,9 +29,14 @@
             </div> 
         {% endfor %}
         </div> -->
+
+        <textarea class="text-box" type="text" id="user-text"></textarea>
     </div>
 </div>
 <!--This script is used for making the message previews interactable-->
 <script src="{{ url_for('static', filename='JS/conversations.js') }}"></script>
+<!--This script will handle live communication-->
+<script src="{{ url_for('static', filename='JS/conversations_live.js') }}"></script>
+
 
 {% endblock %}

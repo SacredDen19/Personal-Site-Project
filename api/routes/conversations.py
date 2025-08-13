@@ -12,75 +12,44 @@ def main():
     if request.method == 'GET':
         user = load_loggedin()
         #Sets the correct user conversations and their previews
-        conversations = conversation_member.caller_id(session['user_id'])
+        conversations = conversation_member.caller_id('READ', record_id=session['user_id'])
         #print(f'main class ran! Conversations value: {conversations}')
         #sorted_messages = sorted(messages, key=lambda x: x['time']) Sorts the messages dictionary using lambda function x which iterates through each message in messages dictionary and sorts them by time
         return render_template('conversations.html', user=user, conversations=conversations)
     
-@conv_blueprint.route('/conversations/<int:conversationID>', methods=['GET'])
+#This route is in charge of showing each message posted per preview clicked
+@conv_blueprint.route('/conversations/<int:conversationID>', methods=['GET', 'POSt'])
 def show_conversation(conversationID):
-    conversation_id = conversationID
-    ##conversation_id = conversation_member.caller_id(session)
-    ##conversation_id = get_conversations().get(conversationID)
-    #conversations_json = jsonify(get_conversations())
+    user = load_loggedin()
+    match request.method:
+        case 'GET': 
+            conversation_id = conversationID
+            messages_posted = message.caller_id('READ', record_id=conversation_id)
+            print("Printing users within conversations context: ",user.get("Username"))
+            #print("Below will print the messages posted: ")
+            #print([message_posted.to_dict() for message_posted in messages_posted])
+            return jsonify({
+                'messages': [message_posted.to_dict() for message_posted in messages_posted],
+                'username' : [user.get("Username")],
+                })
+        case 'POST':
+            data = request.get_json()
+            sent_by = session['user_id'] #Sets the sent_id for insertion
+            raw_text = data['message_text']
+            parent_id = data['parent']
 
-    messages_posted = message.caller_id(conversation_id)
-    print("Below will print the messages posted: ")
-    print([message_posted.to_dict() for message_posted in messages_posted])
-
-    return jsonify({
-        'messages': [message_posted.to_dict() for message_posted in messages_posted]
-        })
-    #return render_template('conversations.html', user=user, messages=conversations, conversations_json=conversations_json)
-
-
-
-def get_messages():
-
-    messages = [
-        {'conversationID': 0, 'user': 'user2', 'text':"Welcome to the conversation page. More to come.", 'time': "08-06-2025 11:00"},
-        {'conversationID': 1, 'user': 'user1', 'text':"Hello, user2, how are you?", 'time': "08-06-2025 13:00"},
-        {'conversationID': 1, 'user': 'user2', 'text':"Hello user1, I am good. How is it?", 'time': "08-06-2025 13:02"},
-        {'conversationID': 1, 'user': 'user1', 'text':"It is very good. How's the day?", 'time': "08-06-2025 13:10"},
-        {'conversationID': 1, 'user': 'user2', 'text':"It's a nice day.", 'time': "08-06-2025 17:35"},
-        {'conversationID': 1, 'user': 'user2', 'text':"Did you get those documents?", 'time': "08-06-2025 17:35"},
-        {'conversationID': 1, 'user': 'user1', 'text':"I have not got them yet.", 'time': "08-06-2025 17:38"},
-        {'conversationID': 1, 'user': 'user2', 'text':"Office closes early today. Hurry.", 'time': "08-06-2025 17:41"},
-        {'conversationID': 1, 'user': 'user1', 'text':"I will now. Thanks.", 'time': "08-06-2025 17:55"},
-        {'conversationID': 1, 'user': 'user2', 'text':"No problem, don't forget to get your drive", 'time': "08-06-2025 18:01"},
-        {'conversationID': 1, 'user': 'user1', 'text':"Of course, I won't forget.", 'time': "08-06-2025 18:04"},
-        
-    ]
-    sorted_messages = sorted(messages, key=lambda x: x['time']) #Sorts the messages dictionary using lambda function x which iterates through each message in messages dictionary and sorts them by time
-    return sorted_messages
-
-
-def get_conversations():
-    conversations = {
-        '0' : {
-            "messages" : [{'user': 'user2', 'text':"Welcome to the conversation page. More to come.", 'time': "08-06-2025 11:00"}
-            ]},
-        
-        '1' :{},
-
-        '2' : {
-            'messages' : [
-            {'user': 'user1', 'text':"Hello, user2, how are you?", 'time': "08-06-2025 13:00"},
-            {'user': 'user2', 'text':"Hello user1, I am good. How is it?", 'time': "08-06-2025 13:02"},
-            {'user': 'user1', 'text':"It is very good. How's the day?", 'time': "08-06-2025 13:10"},
-            {'user': 'user2', 'text':"It's a nice day.", 'time': "08-06-2025 17:35"},
-            {'user': 'user2', 'text':"Did you get those documents?", 'time': "08-06-2025 17:35"},
-            {'user': 'user1', 'text':"I have not got them yet.", 'time': "08-06-2025 17:38"},
-            {'user': 'user2', 'text':"Office closes early today. Hurry.", 'time': "08-06-2025 17:41"},
-            {'user': 'user1', 'text':"I will now. Thanks.", 'time': "08-06-2025 17:55"},
-            {'user': 'user2', 'text':"No problem, don't forget to get your drive", 'time': "08-06-2025 18:01"},
+            print("Printing data before crash: ", data)
+            user = data['username']
+            print(f'Sent by user: {user} with ID: {sent_by} \n Raw message text: {raw_text} \n Conversation parent: {parent_id}')
             
-            {'user': 'user1', 'text':"New day, new conversation sample.", 'time': "08-10-2025 00:04"},
-            {'user': 'user2', 'text':"Right, this sample conversation At one point the scroll bar and text wrapping will be put to the test with this message. Do you think so otherwise?", 'time': "08-10-2025 00:14"},
-            {'user': 'user1', 'text':"I try not to be a pessimist about the conversations sample features.", 'time': "08-10-2025 00:18"},
-            {'user': 'user1', 'text':"At one point everything will be fixed and things will be better", 'time': "08-10-2025 00:24"},
-            {'user': 'user2', 'text':"I guess we will see where time takes us.", 'time': "08-10-2025 01:04"}
-            ]
-        },
-    }
-    return conversations
+            message.caller_id('WRITE', sent_by=sent_by, raw_text=raw_text, parent_id=parent_id, user=user)
+            return jsonify({
+                "status": "success",
+                "message": "Message was added successfully",
+                "data": {
+                    "sent_by": sent_by,
+                    "message_text": raw_text,
+                    "parent_id": parent_id
+                }
+
+            })

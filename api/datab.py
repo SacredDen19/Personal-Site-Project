@@ -32,6 +32,7 @@ def register_user(username, password):
 
 		#Session values
 		session['user_id'] = user['Userid']
+		print("THis is username: ", session['username'])
 		return True
 	except IntegrityError: #Checks for double entry in database
 		error = f'The username {username} is taken'
@@ -51,6 +52,9 @@ def load_loggedin():
 		cursor = conn.cursor(dictionary=True)
 		cursor.execute("SELECT * FROM users WHERE Userid = %s", (session["user_id"],))
 		user = cursor.fetchone()
+
+		session['username'] = user['Username']
+		print(user)
 		return user
 	else:
 		user=None

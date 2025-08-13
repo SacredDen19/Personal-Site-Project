@@ -39,6 +39,15 @@
     flex-direction: column;
 }
 
+.text-box {
+    flex-shrink: 0;
+    position: sticky;
+    margin-top: auto;
+    bottom: -2.5vh;
+    resize:none;
+    font-size:18px;
+}
+
 .message {
     width: 15vh;
     max-width: 30vh;

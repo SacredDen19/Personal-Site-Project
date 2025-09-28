@@ -23,7 +23,7 @@ def return_home():
 	return render_template(session.get('current_page', 'index.html'), user=user)
 
 
-#socketio has to be removed and game events have to be manually handled as done so above this comment. For later.
+#socketio live events
 connected_devices = {}
 @socketio.on('connect')
 def on_connect():

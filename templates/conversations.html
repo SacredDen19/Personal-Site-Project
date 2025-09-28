@@ -14,10 +14,20 @@
 <div class="main-content">
     <!--This container contains both the previews and conversation thread-->
     <div class="conversations-containter">
-        <!-- for conversation_id in conversations  --> <!--Shows the preview of the conversations that exist --->
-        {% for row in conversations %}
-            <div class="conversations-preview" id="{{row['conv_id']}}">Convo id: {{ row }}</div>
-        {% endfor %}
+        <div class="previews-options-container">
+            <input id="previews-options-search" type="text" placeholder="Search Converastions..">
+            <div class="previews-options" id="create-conversation-preview-button">
+                Create conversation
+            </div>
+            <div class="previews-options">
+                Place Holder for something
+            </div>
+        </div>
+        {% if conversations %}
+            {% for row in conversations %}
+                <div class="conversations-preview" id="{{row['conv_id']}}">Convo id: {{ row }}</div>
+            {% endfor %}
+        {% endif %}
     </div>
     <!--This container contains individual message blocks-->
     <div class="messages-container">
@@ -33,6 +43,10 @@
         <textarea class="text-box" type="text" id="user-text"></textarea>
     </div>
 </div>
+<script> 
+    var usr = {{ user|tojson|safe }}; 
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 <!--This script is used for making the message previews interactable-->
 <script src="{{ url_for('static', filename='JS/conversations.js') }}"></script>
 <!--This script will handle live communication-->

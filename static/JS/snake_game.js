@@ -37,19 +37,6 @@ const canvas = document.getElementById('gameCanvas');
 		//console.log("If this prints, hello, this function is working.")
 }
 
-//	function restartGame() {
-//		socket.on('game_restart', () => {
-//			console.log("Button is pressed!");
-//			let gameStopped = true;
-//			socketio.emit('game_restart', gameStopped)
-//		});
-//	}
-
-
-
-
-
-
 	socket.on('connect', () => {
 		console.log('Client connected!!');	
 	;})

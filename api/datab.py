@@ -54,7 +54,7 @@ def load_loggedin():
 		user = cursor.fetchone()
 
 		session['username'] = user['Username']
-		print(user)
+		#print(user)
 		return user
 	else:
 		user=None

@@ -8,4 +8,4 @@
 #at the same time.
 from flask_socketio import SocketIO
 
-socketio = SocketIO()
+socketio = SocketIO(ping_interval=15, ping_timeout=5)

@@ -40,4 +40,33 @@ class conversation(Model):
         }
         return f'{dict}'
 
+class getConversation(Model):
+    table_name = 'conversation'
+    column_id = 'created_by'
+
+    def __init__(self, conversation_id, conversation_name, date_created, created_by):
+        self.conversation_id = conversation_id
+        self.conversation_name= conversation_name
+        self.date_created = date_created
+        self.created_by = created_by
+    
+    def to_json(self):
+        dict = {
+            'conversation_id' : self.conversation_id,
+            'conversation_name' : self.conversation_name,
+            'date created' : self.date_created,
+            'created by' : self.created_by
+        }
+        return f'{dict}'
+    
+    def __repr__(self):
+        dict = {
+            'conversation_id' : self.conversation_id,
+            'conversation_name' : self.conversation_name,
+            'date created' : self.date_created,
+            'created by' : self.created_by
+        }
+        return f'{dict}'
+        
+        
 

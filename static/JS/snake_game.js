@@ -38,7 +38,12 @@ const canvas = document.getElementById('gameCanvas');
 }
 
 	socket.on('connect', () => {
-		console.log('Client connected!!');	
+		console.log('Client connected!!');
+		socket.emit('start_game');
+	;})
+	socket.on('game_started', () => {
+		console.log('Client game started');
+
 	;})
 
 
@@ -50,4 +55,8 @@ const canvas = document.getElementById('gameCanvas');
 		socket.emit('move');
 	
 }
+	socket.on('disconnect', () => {
+	console.log('Socket client disconnected!')
+	;})
+
 	setInterval(gameLoop, 100);

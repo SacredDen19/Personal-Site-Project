@@ -26,15 +26,21 @@ def return_home():
 #socketio live events
 connected_devices = {}
 @socketio.on('connect')
-def on_connect():
+def handle_connect():
+	print('CONNECTION WITH BACK END SOCKET INTIATED')
+@socketio.on('start_game')
+def start_game():
 	device_id = session.get('device_id')
 	user_games[device_id] = SnakeGame()
 	if device_id:
 		join_room(device_id)
+	socketio.emit('game_started')
 @socketio.on('move')
 def handle_move_snake():
 	device_id = session.get('device_id')
 	game = user_games.get(device_id)
+	print(f'Toubleshooting game value: {game}\nGame.move value:')
+	print(f'USER GAMES VALUE: {user_games}')
 	game.move()
 	socketio.emit('game_state', game.to_dict(), room=device_id)
 
@@ -52,3 +58,6 @@ def handle_change_direction(direction):
 	game.change_direction(direction)
 	socketio.emit(room=device_id)
 
+@socketio.on('disconnect')
+def handle_disconnect():
+	pass

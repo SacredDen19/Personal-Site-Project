@@ -16,7 +16,7 @@
         <div id="log-inner-wrapper">    
             <div id="log-text">
                 {% for string in line %}
-                    {{ print(string) }}
+                    {{ '\n' + string }}
                 {% endfor %}
             </div>
         </div>

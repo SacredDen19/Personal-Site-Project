@@ -1,5 +1,6 @@
 from flask import Blueprint, Flask, render_template, session, request
 from api.datab import load_loggedin
+import re
 
 admin_panel = Blueprint('apanel', __name__)
 
@@ -12,4 +13,5 @@ def landing():
         with open("/var/www/public_html/logs/error.log") as log_file:
             for line in log_file:
                 line= log_file.read()
-        return render_template('admin_dashboard.html', user=usr, line=line)
+                parsed_line = re.split("\n+", line)
+        return render_template('admin_dashboard.html', user=usr, line=parsed_line)

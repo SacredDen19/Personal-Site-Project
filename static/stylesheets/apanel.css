@@ -11,9 +11,9 @@
 }
 
 #log-inner-wrapper {
-    width: 20rem;
-    max-width: 60rem;
+    width: 60rem;
     margin: 1rem 0rem 0rem 1rem;
     padding: 1.5rem 1px 1px 1px;
     border: 3px black solid;
+    overflow-y: auto;
 }

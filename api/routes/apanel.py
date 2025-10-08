@@ -10,6 +10,6 @@ def landing():
         usr = load_loggedin()
 
         with open("/var/www/public_html/logs/error.log") as log_file:
-            line = log_file.readline()
+            line = log_file.read()
 
         return render_template('admin_dashboard.html', user=usr, line=line)

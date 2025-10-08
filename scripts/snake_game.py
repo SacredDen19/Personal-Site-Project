@@ -89,14 +89,12 @@ class SnakeGame:
 		global velocityX, velocityY, snake, food, snake_body, game_over, score, W_WIDTH, W_HEIGHT
 		if(self.game_over):
 			return
-
 		if (self.snake[0].x < 0 or self.snake[0].x >= W_WIDTH or self.snake[0].y < 0 or self.snake[0].y >= W_HEIGHT):
-			game_over = True
+			self.game_over = True
 			return
-
 		for self.tile in self.snake_body:
 			if (self.snake[0].x == self.tile.x and self.snake[0].y == self.tile.y): #changed tile to tile[0]
-				game_over = True
+				self.game_over = True
 				return
 
 		#collission

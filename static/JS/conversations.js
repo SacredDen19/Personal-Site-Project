@@ -1,4 +1,4 @@
-console.log("JS ran")
++console.log("JS ran")
 
 //Needed declarations and initializations
 const socket = io()

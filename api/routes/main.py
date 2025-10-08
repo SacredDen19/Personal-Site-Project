@@ -21,6 +21,7 @@ def index():
 
 
 	if request.method == 'GET':
+		print(f'LANDING PAGE LOADED. SESSIONS: {session}')
 		session['current page'] = 'index.html'
 		return render_template('index.html', user=user)
 	

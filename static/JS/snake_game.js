@@ -1,9 +1,9 @@
 const canvas = document.getElementById('gameCanvas');
 	const ctx = canvas.getContext('2d');
-	const socket = io();
+	const socket = io('/snake_game');
 
 	let direction;
-
+	canvas.Scrolltop = canvas.ScrollHeight;
 	document.addEventListener('keydown', (event) => {
 		if (event.key === 'ArrowUp') direction = 'UP';
 		if (event.key === 'ArrowDown') direction = 'DOWN';
@@ -39,22 +39,17 @@ const canvas = document.getElementById('gameCanvas');
 
 	socket.on('connect', () => {
 		console.log('Client connected!!');
-		socket.emit('start_game');
+		//socket.emit('connect');
 	;})
-	socket.on('game_started', () => {
-		console.log('Client game started');
-
-	;})
-
 
 	socket.on('game_state', (data) => {
 		console.log('Received game state: ', data);
 		drawGame(data.snake_head, data.snake, data.food);
-	});	
+	;})
+
 	function gameLoop() {
 		socket.emit('move');
-	
-}
+	}
 	socket.on('disconnect', () => {
 	console.log('Socket client disconnected!')
 	;})

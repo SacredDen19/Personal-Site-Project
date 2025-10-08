@@ -8,8 +8,8 @@ admin_panel = Blueprint('apanel', __name__)
 def landing():
     if request.method == 'GET':
         usr = load_loggedin()
-        lines = {}
+        
         with open("/var/www/public_html/logs/error.log") as log_file:
             for line in log_file:
-                lines[line] = log_file.readline()
-        return render_template('admin_dashboard.html', user=usr, line=lines)
+                line= log_file.read()
+        return render_template('admin_dashboard.html', user=usr, line=line)

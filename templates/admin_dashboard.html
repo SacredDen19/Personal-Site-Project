@@ -15,7 +15,7 @@
         <button>Placeholder</button>
         <div id="log-inner-wrapper">    
             <div id="log-text">
-                {{% for string in line %}}
+                {% for string in line %}
                     {{ print(string) }}
                 {% endfor %}
             </div>

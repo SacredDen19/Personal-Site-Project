@@ -1,1 +1,19 @@
- 
+ #log-outer-wrapper {
+    display: flex;
+    width: 1000px;
+    height: 25rem;
+    max-height: 30rem;
+    background-color: white;
+    flex-direction: column;
+    margin: 3rem auto;
+    border: 3px black solid;
+    column-gap: 1rem;
+}
+
+#log-inner-wrapper {
+    width: 20rem;
+    max-width: 60rem;
+    margin: 1rem 0rem 0rem 1rem;
+    padding: 1.5rem 1px 1px 1px;
+    border: 3px black solid;
+}

@@ -4,7 +4,7 @@ from api.datab import load_loggedin
 admin_panel = Blueprint('apanel', __name__)
 
 
-@admin_panel.route('/conversations', methods=['GET'])
+@admin_panel.route('/admin', methods=['GET'])
 def landing():
     if request.method == 'GET':
         usr = load_loggedin

@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, render_template, session, request
 from api.datab import load_loggedin
 import re
+from ..handlers.log_handler import error_parser
 
 admin_panel = Blueprint('apanel', __name__)
 
@@ -9,9 +10,9 @@ admin_panel = Blueprint('apanel', __name__)
 def landing():
     if request.method == 'GET':
         usr = load_loggedin()
-        lines = {}
+        
         with open("/var/www/public_html/logs/error.log") as log_file:
-            for line in log_file:
-                lines[line]= log_file.readline()
-                #parsed_line = re.split("\n+", line)
-        return render_template('admin_dashboard.html', user=usr, line=lines)
+            logs = log_file.read()
+        formatted_logs = error_parser(logs)
+
+        return render_template('admin_dashboard.html', user=usr, line=formatted_logs)

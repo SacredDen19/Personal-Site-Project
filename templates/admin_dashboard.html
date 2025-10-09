@@ -15,9 +15,7 @@
         <button>Placeholder</button>
         <div id="log-inner-wrapper">    
             <div id="log-text">
-                {% for string in line %}
-                    {{ string + '\n' }}
-                {% endfor %}
+                <pre style="white-space: pre-wrap; font-family: monospace;"> {{ line }} </pre>
             </div>
         </div>
     </div>
